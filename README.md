@@ -1,6 +1,6 @@
 # Orcha MCP server
 
-Orcha gives AI agents a shared, permission-scoped context library: native files and folders, structured databases, curated context bundles, and read-only documents synced from connected sources, all searchable with citations back to the exact source version.
+Orcha is a unified context layer for AI tools and agents. It stores, indexes, and exposes organizational, team, or individual knowledge. Files, structured databases, and connected sources live in one workspace, and agents reach them through Model Context Protocol (MCP), CLI with virtual file system, or REST API, with permissions, citations, and provenance.
 
 This repository is the public connection guide and registry listing for Orcha's hosted MCP server. The service runs at:
 
