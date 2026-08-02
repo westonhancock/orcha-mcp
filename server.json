@@ -1,0 +1,29 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.westonhancock/orcha",
+  "title": "Orcha",
+  "description": "Securely search and manage workspace context files for AI agents and teams.",
+  "version": "1.0.1",
+  "websiteUrl": "https://tryorcha.com/product?utm_source=mcp_registry&utm_medium=referral&utm_campaign=mcp_launch",
+  "repository": {
+    "url": "https://github.com/westonhancock/orcha-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://app.tryorcha.com/mcp"
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "com.tryorcha/listing": {
+        "privacyPolicyUrl": "https://tryorcha.com/privacy",
+        "termsOfServiceUrl": "https://tryorcha.com/terms",
+        "supportUrl": "mailto:support@tryorcha.com",
+        "documentationUrl": "https://tryorcha.com/docs/reference/mcp",
+        "attributionUrl": "https://app.tryorcha.com/signup?utm_source=mcp_registry&utm_medium=referral&utm_campaign=mcp_launch"
+      }
+    }
+  }
+}
