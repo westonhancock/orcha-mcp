@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "orcha": {
+      "type": "http",
+      "url": "https://app.tryorcha.com/mcp"
+    }
+  }
+}
