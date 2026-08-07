@@ -7,7 +7,7 @@ tell an agent how to search it well.
 
 ```
 /plugin marketplace add westonhancock/orcha-mcp
-/plugin install orcha@tryorcha
+/plugin install orcha@orcha
 ```
 
 The plugin brings its own MCP server configuration, so there is no separate

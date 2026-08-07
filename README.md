@@ -90,7 +90,7 @@ Claude Code can install the connection and the usage guides together:
 
 ```
 /plugin marketplace add westonhancock/orcha-mcp
-/plugin install orcha@tryorcha
+/plugin install orcha@orcha
 ```
 
 The plugin carries its own server configuration, so it replaces the
