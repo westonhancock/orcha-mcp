@@ -1,0 +1,20 @@
+{
+  "name": "orcha",
+  "description": "Plugins for Orcha, the context layer for teams whose work runs through AI",
+  "owner": {
+    "name": "Weston Hancock",
+    "email": "support@tryorcha.com"
+  },
+  "plugins": [
+    {
+      "name": "orcha",
+      "source": "./plugins/orcha",
+      "description": "Connect to an Orcha context workspace and teach agents how to use it well",
+      "author": {
+        "name": "Weston Hancock"
+      },
+      "homepage": "https://tryorcha.com",
+      "keywords": ["context", "search", "knowledge", "mcp", "rag"]
+    }
+  ]
+}

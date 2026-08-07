@@ -1,0 +1,11 @@
+{
+  "name": "orcha",
+  "description": "Connect to an Orcha context workspace and teach agents how to use it well",
+  "version": "0.1.0",
+  "author": {
+    "name": "Weston Hancock",
+    "email": "support@tryorcha.com"
+  },
+  "homepage": "https://tryorcha.com",
+  "repository": "https://github.com/westonhancock/orcha-mcp"
+}
