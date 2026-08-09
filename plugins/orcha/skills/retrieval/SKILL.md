@@ -1,6 +1,6 @@
 ---
 name: retrieval
-description: "Pick the right Orcha tool for a question and get evidence back on the first try. Use when working with an Orcha workspace over MCP and you need to find something: content in files or synced sources, a value in a structured database, the shape of the workspace, or a curated bundle."
+description: "Pick the right Orcha tool for a question and get evidence back on the first try. Use when working with an Orcha workspace over MCP and you need to find something: content in files or synced sources, a value in a structured database, the shape of the workspace, or a curated memory."
 ---
 
 # Finding things in Orcha
@@ -14,12 +14,12 @@ whichever tool you called last.
 | About content: "what does X say", "how do we handle Y" | `search_context` | `list_files` then reading everything |
 | Structural: what exists, where it lives, an exact string | `browse_context` | `search_context` with a filename as the query |
 | About typed fields: statuses, owners, dates, counts | `list_databases` → `get_database` → `query_database` | `search_context` |
-| Named a bundle, or the task matches a bundle's `useWhen` | `list_bundles` → `get_bundle` | loading files one at a time |
+| Named a memory, or the task matches a memory's `useWhen` | `list_memories` → `get_memory` | loading files one at a time |
 | Aimed at one provider: "check the Linear issues" | `query_source` | `search_context` across everything |
 | "What is in this workspace?" | `get_workspace_overview` | guessing |
 
 When you are new to a workspace, call `get_workspace_overview` once. It returns
-folders with their `useWhen` guidance, bundles, connected sources with their
+folders with their `useWhen` guidance, memories, connected sources with their
 `sourceId` and `lastSyncedAt`, and index counts. Most bad retrieval sessions
 start with skipping it and inventing folder names.
 
@@ -66,7 +66,7 @@ See `references/search-tuning.md` for worked query examples.
 ## Using browse_context well
 
 `browse_context` runs a read-only shell over a virtual tree: `/files`,
-`/bundles`, `/databases` (one markdown file per record), and `/sources`.
+`/memories`, `/databases` (one markdown file per record), and `/sources`.
 Available commands are `ls`, `tree`, `find`, `cat`, `grep`, `rg`, `head`,
 `tail`, `wc`, and `stat`. Pipe with `|`, chain with `;` or `&&`.
 
@@ -86,12 +86,15 @@ those IDs are UUIDs. Call `get_database` first to map names to IDs, or every
 filter you write will fail. One property filter per query, with operators
 `contains`, `equals`, `not_equals`, `is_empty`, and `is_not_empty`.
 
-## Bundles
+## Memories
 
-`get_bundle` takes a **slug**, not an ID, and returns the complete current
-contents of every file in it. That is a deliberate, sometimes large load. Use
-it when the user names a bundle or the task matches the `useWhen` text from
-`list_bundles`. For an open-ended question, search instead.
+`get_memory` takes a **slug**, not an ID, and returns the complete current
+contents of every member: files, folders expanded to their current files,
+retained connected-source documents, and database records. That is a
+deliberate, sometimes large load, and its `coverage` array reports anything
+excluded, truncated, or unavailable. Use it when the user names a memory or
+the task matches the `useWhen` text from `list_memories`. For an open-ended
+question, search instead.
 
 ## A sensible default sequence
 

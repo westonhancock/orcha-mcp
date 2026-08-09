@@ -4,7 +4,7 @@ The virtual tree mounts four roots:
 
 ```
 /files       Orcha-native files, in their folder structure
-/bundles     curated context sets
+/memories    curated context sets
 /databases   one markdown file per record
 /sources     documents synced from connected sources
 ```
