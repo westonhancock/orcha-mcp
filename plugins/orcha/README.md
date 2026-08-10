@@ -18,8 +18,8 @@ and re-checked on every request.
 
 ## What you get
 
-The MCP server, with 26 tools covering ranked search across every indexed
-document, file and folder operations, curated context bundles, structured
+The MCP server, with 28 tools covering ranked search across every indexed
+document, file and folder operations, curated memories, structured
 databases, direct access to connected read-only sources, and a
 filesystem-shaped browser over the whole workspace.
 
@@ -39,7 +39,7 @@ one directly by name.
 
 Orcha exposes several retrieval paths that look interchangeable and are not.
 Semantic search, exact-string grep over a virtual filesystem, typed database
-queries, and curated bundles each answer a different shape of question. An
+queries, and curated memories each answer a different shape of question. An
 agent guessing between them wastes calls and returns worse answers. The skills
 encode the routing rules, the response formats, and the failure modes, and they
 cost nothing until Claude actually loads one.

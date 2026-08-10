@@ -16,7 +16,7 @@ workspace has nothing on that" is wrong for most of them.
 | `Token must be scoped to a workspace` | The token has no workspace. Nothing will work until that is fixed |
 | `File is outside token scope` / `Database not found or outside token scope` | It may well exist. This token is folder-scoped and cannot see it |
 | `Folder-scoped tokens cannot query connected sources` | All connected-source tools are closed to this token |
-| `Bundle not found` | Check you passed the **slug**, not the ID or the display name |
+| `Memory not found` | Check you passed the **slug**, not the ID or the display name |
 | `(no output)` from `browse_context` | The script ran and matched nothing. The path may be wrong; try `ls` one level up |
 
 Scope errors are the ones most often misread. "Not found or outside token

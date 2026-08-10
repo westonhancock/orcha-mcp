@@ -15,11 +15,22 @@ them.
 |---|---|
 | Orcha-native files (`create_file`, `update_file`, `delete_file`) | Documents synced from a connected source |
 | Folders (`create_folder`) | Anything under `/sources` in `browse_context` |
-| Structured database records | Bundle membership |
+| Structured database records | Synced document content |
+| Memories (`create_memory`, `update_memory`) | |
 
 There is no tool that edits a synced document, and that is deliberate. The
 upstream system owns it. If a synced document is wrong, tell the maintainers
 with `submit_feedback` rather than trying to correct it in Orcha.
+
+## Curating memories
+
+When a task keeps needing the same context set, capture it: `create_memory`
+with a `useWhen` sentence and members by kind (`file`, `folder`,
+`source_document`, `database`). A folder member expands to its current files
+on every load, so prefer a folder over listing its files one by one.
+`update_memory` revises metadata, adds members, or removes them by member id
+(removal needs the `delete` permission). Write `useWhen` as routing advice
+for a future agent, not a description: say when to load it.
 
 ## update_file replaces the whole body
 

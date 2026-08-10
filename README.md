@@ -12,12 +12,12 @@ Transport is Streamable HTTP. The application source code is private; nothing ne
 
 ## What the server provides
 
-26 tools spanning:
+28 tools spanning:
 
 - Usage guides the agent can read for itself (`get_usage_guide`), covering tool choice, search tuning, citations, writing back, and troubleshooting
 - Ranked search over all indexed workspace content (`search_context`) with fast, balanced, and fresh routing modes, plus a citation on every result
 - File and folder reading, creation, update, organization, and deletion, scoped to what the connection is allowed to touch
-- Curated context bundles with usage guidance (`list_bundles`, `get_bundle`)
+- Curated memories with usage guidance (`list_memories`, `get_memory`), including agent-side curation (`create_memory`, `update_memory`) covering files, folders, synced documents, and database views
 - Structured databases with typed queries (`list_databases`, `query_database`, record CRUD)
 - Direct access to connected read-only sources (`query_source`, `fetch_source_document`, `list_source_documents`)
 - Filesystem-shaped browsing (`browse_context`): ls, tree, find, cat, grep, and stat over a virtual tree of the workspace
@@ -80,9 +80,9 @@ connection and adds the usage guides as skills.
 
 - "Search my workspace for the current authentication requirements and summarize them with the source file names."
 - "Show me the five files most related to our deployment runbook."
-- "Check which Orcha context bundles apply to this task and use the best match as the source of truth."
+- "Check which Orcha memories apply to this task and use the best match as the source of truth."
 - "Create a Markdown file named `launch-checklist.md` from these release requirements."
-- "Get the `engineering-onboarding` context bundle and identify any conflicting guidance."
+- "Get the `engineering-onboarding` memory and identify any conflicting guidance."
 
 ## Claude Code plugin
 

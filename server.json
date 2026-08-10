@@ -3,7 +3,7 @@
   "name": "io.github.westonhancock/orcha",
   "title": "Orcha",
   "description": "Securely search and manage workspace context files for AI agents and teams.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "websiteUrl": "https://tryorcha.com/product?utm_source=mcp_registry&utm_medium=referral&utm_campaign=mcp_launch",
   "repository": {
     "url": "https://github.com/westonhancock/orcha-mcp",
