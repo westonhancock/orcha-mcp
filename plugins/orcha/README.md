@@ -1,7 +1,9 @@
-# Orcha plugin for Claude Code
+# Orcha plugin
 
-Connects Claude Code to an Orcha workspace and installs the usage guides that
-tell an agent how to search it well.
+Connects Claude Code, ChatGPT, or Codex to an Orcha workspace and installs the
+usage guides that tell an agent how to search it well. This one directory is
+both a Claude Code plugin (`.claude-plugin/plugin.json`, `.mcp.json`) and a
+portable OpenAI plugin (`plugin.json`, `mcp.json`).
 
 ## Install
 
@@ -18,7 +20,7 @@ and re-checked on every request.
 
 ## What you get
 
-The MCP server, with 28 tools covering ranked search across every indexed
+The MCP server, with 30 tools covering ranked search across every indexed
 document, file and folder operations, curated memories, structured
 databases, direct access to connected read-only sources, and a
 filesystem-shaped browser over the whole workspace.
@@ -44,9 +46,23 @@ agent guessing between them wastes calls and returns worse answers. The skills
 encode the routing rules, the response formats, and the failure modes, and they
 cost nothing until Claude actually loads one.
 
+## ChatGPT and Codex
+
+Install from the shared ChatGPT and Codex plugin directory once it is listed,
+or in Codex add this repository as a marketplace and install from it:
+
+```
+codex plugin marketplace add westonhancock/orcha-mcp
+```
+
+The OpenAI package adds a fifth skill, `setup`, which runs after installation
+to confirm the connected workspace and run a first cited search. In ChatGPT
+outside developer mode only the `search` and `fetch` tools are used; developer
+mode exposes all 30.
+
 ## Other clients
 
-The same guidance reaches non-Claude-Code clients through the server itself.
+The same guidance reaches every other client through the server itself.
 Every MCP client can call the `get_usage_guide` tool, which returns these exact
 files. Clients that implement the draft `io.modelcontextprotocol/skills`
 extension can also discover them through `skills/list` and read them as

@@ -12,7 +12,7 @@ Transport is Streamable HTTP. The application source code is private; nothing ne
 
 ## What the server provides
 
-28 tools spanning:
+30 tools spanning:
 
 - Usage guides the agent can read for itself (`get_usage_guide`), covering tool choice, search tuning, citations, writing back, and troubleshooting
 - Ranked search over all indexed workspace content (`search_context`) with fast, balanced, and fresh routing modes, plus a citation on every result
@@ -21,6 +21,7 @@ Transport is Streamable HTTP. The application source code is private; nothing ne
 - Structured databases with typed queries (`list_databases`, `query_database`, record CRUD)
 - Direct access to connected read-only sources (`query_source`, `fetch_source_document`, `list_source_documents`)
 - Filesystem-shaped browsing (`browse_context`): ls, tree, find, cat, grep, and stat over a virtual tree of the workspace
+- ChatGPT's two-tool retrieval contract (`search`, `fetch`), which chat, deep research, and company knowledge use outside developer mode
 
 Every connection is isolated to the organization, workspace, permissions, and optional folder scope it was granted.
 
@@ -53,8 +54,8 @@ Codex also reads Agent Skills from `.agents/skills/` in a repository or `~/.agen
 
 Cursor and other OAuth-capable clients: add a remote MCP server with the same URL and follow the sign-in prompt.
 
-Claude Code users can instead install the plugin below, which does the same
-connection and adds the usage guides as skills.
+Claude Code, ChatGPT, and Codex users can instead install the plugins below,
+which do the same connection and add the usage guides as skills.
 
 ## Connect with a bearer token (headless and CI clients)
 
@@ -98,8 +99,24 @@ The plugin carries its own server configuration, so it replaces the
 usage guides as skills, so Claude loads the relevant one when a task calls for
 it. See [plugins/orcha](./plugins/orcha) for details.
 
-This is a convenience for one client. Every other client gets the same guidance
-from the server through `get_usage_guide`.
+## OpenAI plugin (ChatGPT and Codex)
+
+The same `plugins/orcha` directory is also a portable OpenAI plugin: a root
+`plugin.json`, an `mcp.json` that names the server with OAuth dynamic client
+registration, the four usage guides as skills, and a `setup` skill that runs
+after installation to confirm the connected workspace. Once it is listed in
+the shared ChatGPT and Codex plugin directory, install it from there. Codex
+can install it from this repository today:
+
+```
+codex plugin marketplace add westonhancock/orcha-mcp
+```
+
+Then open `/plugins`, choose the `orcha` marketplace, and install. The
+marketplace file is [`.agents/plugins/marketplace.json`](./.agents/plugins/marketplace.json).
+
+Both plugins are a convenience for their clients. Every other client gets the
+same guidance from the server through `get_usage_guide`.
 
 ## Registry listing
 
