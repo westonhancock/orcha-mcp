@@ -1,0 +1,97 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "orcha",
+  "version": "1.0.0",
+  "description": "Connect an Orcha context workspace to ChatGPT and Codex: search files, structured databases, and synced sources with citations, load curated memories, and write back with permission.",
+  "author": {
+    "name": "Weston Hancock",
+    "email": "support@tryorcha.com",
+    "url": "https://tryorcha.com"
+  },
+  "homepage": "https://tryorcha.com",
+  "repository": "https://github.com/westonhancock/orcha-mcp",
+  "license": "MIT",
+  "keywords": ["context", "search", "knowledge", "memory", "mcp", "rag"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Orcha",
+        "shortDescription": "Your workspace context, cited",
+        "longDescription": "Orcha stores the context your team's work runs on: native files and folders, structured databases, imports from Obsidian and Notion, and read-only documents synced from connected sources such as GitHub, Google Drive, Notion, Linear, and Asana. This plugin connects a workspace to ChatGPT and Codex over OAuth. Ask about anything in the workspace and get ranked, cited answers that link back to the exact document, line, or record. Load a curated memory when a task matches its guidance, query a structured database for statuses, owners, and dates, and browse the workspace as a read-only tree. With write permission granted at connection time, the plugin can also create and update files and memories. Permissions are capped at your workspace role and re-checked on every request.",
+        "developerName": "Weston Hancock",
+        "category": "Productivity",
+        "capabilities": [
+          "Search files, databases, and synced sources with citations",
+          "Load curated memories for repeatable tasks",
+          "Query structured databases by field",
+          "Browse the workspace as a read-only tree",
+          "Create and update files and memories with write permission"
+        ],
+        "websiteURL": "https://tryorcha.com",
+        "supportURL": "https://tryorcha.com/docs/support",
+        "privacyPolicyURL": "https://tryorcha.com/privacy",
+        "termsOfServiceURL": "https://tryorcha.com/terms",
+        "defaultPrompt": [
+          "Search my Orcha workspace for our deployment requirements",
+          "Which Orcha memories apply to this task? Load the best match",
+          "Summarize what my Orcha workspace says about onboarding"
+        ],
+        "brandColor": "#A94A67",
+        "brandColorDark": "#DE9AAE",
+        "composerIcon": "./assets/orcha-mark.svg",
+        "logo": "./assets/orcha-mark.svg"
+      },
+      "onboardingSkill": "./skills/setup/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Open-ended content question answered with cited excerpts",
+              "prompt": "Using Orcha, what does my workspace say about deployment requirements?",
+              "tools_triggered": ["search", "fetch"],
+              "expected_behavior": "The model searches the workspace, cites the matching documents by link, and answers from the returned excerpts without inventing content."
+            },
+            {
+              "description": "Reading a whole document from a search result",
+              "prompt": "Find the onboarding guide in Orcha and give me its full text.",
+              "tools_triggered": ["search", "fetch"],
+              "expected_behavior": "The model searches, picks the onboarding document, fetches it by id, and returns its contents with a link to the file."
+            },
+            {
+              "description": "Memory discovery and load",
+              "prompt": "Which Orcha memories apply to writing a status update? Load the best match and summarize it.",
+              "tools_triggered": ["list_memories", "get_memory"],
+              "expected_behavior": "The model lists memories, compares their useWhen guidance to the task, loads the best match by slug, and summarizes its members with coverage notes."
+            },
+            {
+              "description": "Structured database query",
+              "prompt": "In Orcha, list the open tasks in the Tasks database sorted by due date.",
+              "tools_triggered": ["list_databases", "get_database", "query_database"],
+              "expected_behavior": "The model finds the database, reads its fields, queries records with a status filter and due-date sort, and presents the rows."
+            },
+            {
+              "description": "Workspace orientation",
+              "prompt": "What is in my Orcha workspace?",
+              "tools_triggered": ["get_workspace_overview"],
+              "expected_behavior": "The model returns folder counts, index status, recent files, available memories, and connected sources from the overview."
+            }
+          ],
+          "negative": [
+            {
+              "description": "General knowledge question with no workspace relevance",
+              "prompt": "What is the capital of Australia?"
+            },
+            {
+              "description": "Request for content outside the connected workspace",
+              "prompt": "Search Orcha for my coworker's private messages."
+            },
+            {
+              "description": "Write request on a read-only connection",
+              "prompt": "Delete every file in my Orcha workspace."
+            }
+          ]
+        }
+      }
+    }
+  }
+}
